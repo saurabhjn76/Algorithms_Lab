@@ -4,17 +4,18 @@ using namespace std;
 int l1=0,l2=0;
 int size=10;
 int q1[10],q2[10];
+int frontA=0,frontB=0,rearA=-1,rearB=-1;
 bool notEmpty(int i)
 {
 	if(i==1)
 	{
-		if(l1==0)
+		if(frontA>rearA)
 			return false;
 		else
 			return true;
 	}
 	else
-		if(l2==0)
+		if(frontB>rearB)
 			return false;
 		else
 			return true;
@@ -23,41 +24,55 @@ void enqueue(int i,int element)
 {
 	if(i==1)
 	{
-		q1[l1++]=element;
+		q1[++rearA%size]=element;
 
 	}
 	else 
 	{
-		q2[l2++]=element;
+		q2[++rearB%size]=element;
 	}
 }
 int dequeue(int i)
 {
 	if(i==1)
 	{
-		return q1[(l1--)-1];
+		return q1[frontA++%size];
 
 	}
 	else
-		return q2[(l2--)-1];
+		return q2[frontB++%size];
 }
 
-void enqueue(int k){
-	if(l1<size)
-	
+void push(int k){
+	if(rearA-frontA<size)
+	{
+		if(rearA==-1)
+			enqueue(1,k);
+		else
+		{
+			while(notEmpty(1))
+			{
+				enqueue(2,dequeue(1));
+
+			}
+			enqueue(1,k);
+			while(notEmpty(2))
+			{
+				enqueue(1,dequeue(2));
+
+			}
+
+		}
+	}
 	else
 		printf("The queue is full\n");
 }
-void dequeue(){
+void pop(){
 	if(!notEmpty(1))
-		printf("The queue is empty\n");
+		printf("The stack is empty\n");
 	else
 	{
-		while(notEmpty(1))
-			push(2,pop(1));
-		pop(2);
-		while(notEmpty(2))
-			push(1,pop(2));
+		dequeue(1);
 
 	}
 
@@ -65,7 +80,7 @@ void dequeue(){
 void display()
 {
 	int i;
-	for(i=0;i<l1;i++)
+	for(i=frontA;i<=rearA;i++)
 	{
 		printf("%d-->",q1[i]);
 	}
@@ -83,7 +98,7 @@ int main()
 	{
 		case 1: printf("Enter the element\n");
 				scanf("%d",&k);
-				Push(k);
+				push(k);
 				break;
 		case 2: pop();
 				break;
