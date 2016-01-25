@@ -1,6 +1,7 @@
-#include<bits/stdc++.h>
+// stack using 2 queues
+# include <bits/stdc++.h>
 using namespace std;
-	// stack using 2 queues
+	
 int l1=0,l2=0;
 int size=10;
 int q1[10],q2[10];

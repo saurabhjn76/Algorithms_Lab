@@ -1,5 +1,9 @@
+//5) a) Write a routine for changing a sequence of elements
+// in a queue according to a specified input permutation using one temporary queue
 #include <bits/stdc++.h>
 using namespace std;
+// here the sorting is done using inbuild queue datastructure,in which although the name of function is 
+// push and pop but they are behaving as enqueue and dequeue.
 int main()
 {
 	

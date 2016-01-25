@@ -1,5 +1,8 @@
+//2) Implement hashing with chaining.
 #include <bits/stdc++.h> 
 using namespace std;
+
+
 # define SIZE 10
 typedef struct hash_table{
 	int value;
@@ -15,10 +18,10 @@ hash_table* makeNode(int k)
 }
 void insert(int k)
 {
-	int key=k%SIZE;
+	int key=k%SIZE;                    // hash function
 	if(table[key].value==-1)
 		table[key].value=k;
-	else
+	else                                    // collidion found
 	{
 		hash_table *temp=&(table[key]);
 
@@ -48,7 +51,7 @@ void display()
 int search(int k)
 {
 	hash_table * temp;
-	int key=k%SIZE;
+	int key=k%SIZE;                   // hash function
 	if(table[key].value!=-1)
 		{
 			for(temp=&(table[key]);temp!=NULL ;temp=temp->next)
@@ -73,7 +76,7 @@ int search(int k)
 int deleted(int k)
 {
 	hash_table * temp,*prev;
-	int key=k%SIZE;
+	int key=k%SIZE;                                 // hash function
 	if(table[key].value!=-1)
 		{
 			for(temp=&(table[key]);temp!=NULL ;temp=temp->next)

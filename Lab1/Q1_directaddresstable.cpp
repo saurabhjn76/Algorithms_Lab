@@ -1,5 +1,7 @@
 #include <bits/stdc++.h>
  using namespace std;
+
+ // Ques:1) Implement direct addressing in a table.
  int size=10;
  int table[10]={0};
  void insert( int table[],int ke,int i)
@@ -35,7 +37,7 @@
  	while(j==0)
 	{
  
-	 	printf("Choose the operation\n1)insert 2)delete 3)dipslay 4) search4) exit\n");
+	 	printf("Choose the operation\n1)insert 2)delete 3)dipslay 4) search 5) exit\n");
  		scanf("%d",&c);
  		switch(c)
  		{
