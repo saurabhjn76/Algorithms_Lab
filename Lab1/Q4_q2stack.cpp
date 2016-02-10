@@ -1,4 +1,4 @@
-// stack using 2 queues
+// stack using 2 queues 
 # include <bits/stdc++.h>
 using namespace std;
 	
