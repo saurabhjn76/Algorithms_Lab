@@ -51,7 +51,7 @@ void merge_sort(int arr[],int l,int r,int in1,int in2)
 		merge_sort(arr,m+1,r,(in1+in2)/2+1,in2);
 		merge(arr,l,m,r);
 	}
-}
+ }
 int main()
 {
 	int arr[]={2,4,6,83,13,6,7,245,67};
